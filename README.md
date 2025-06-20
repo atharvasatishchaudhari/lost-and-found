@@ -2,7 +2,8 @@
 
 # Lost & Found UIUC
 
-A simple campus-wide Lost & Found service built with React on the frontend and AWS Serverless (API Gateway, Lambda, DynamoDB, S3, SNS) on the backend. Users can report lost or found items; an admin can browse all reports, mark them solved (deletes), or notify the owner via email through SNS.
+Built on **Node.js** (v18) in AWS Lambda functions, this service uses the full JavaScript stack end-to-end: React on the frontend, and Node.js handlers on the backend to power API Gateway, DynamoDB access, S3 image uploads, authentication (JWT+bcrypt), and SNS-driven email notifications.
+
 
 ---
 
