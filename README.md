@@ -16,7 +16,7 @@ Built on **Node.js** (v18) in AWS Lambda functions, this service uses the full J
 ---
 
 ### Flow of the Website
-1. User visits the site (React frontend)
+# 1. User visits the site (React frontend)
 Tech: React
 
 What happens:
@@ -25,7 +25,7 @@ User lands on the Home page.
 
 React Router renders the Home component with “Get Started” button.
 
-2. “Get Started” logic
+# 2. “Get Started” logic
 Tech: React Router, localStorage
 
 Flow:
@@ -36,7 +36,7 @@ If there is no token in localStorage, React navigates to /login.
 
 Else, navigates directly to /lost (the “Report Lost” form).
 
-3. Sign Up
+# 3. Sign Up
 Route: /signup
 
 Component: Signup.jsx
@@ -61,7 +61,7 @@ Returns 201 Created + message “check your email to confirm notifications.”
 
 Result: User sees success banner, is redirected to /login.
 
-4. Login
+# 4. Login
 Route: /login
 
 Component: Login.jsx
@@ -82,7 +82,7 @@ Issues a JWT signed with your JWT_SECRET.
 
 Client stores JWT in localStorage and redirects to /browse.
 
-5. Report Lost / Report Found
+# 5. Report Lost / Report Found
 Routes: /lost and /found
 
 Components: ReportLost.jsx / ReportFound.jsx
@@ -113,7 +113,7 @@ Returns 201 Created + { id, imageUrl }.
 
 Result: The new report appears for that user in /browse.
 
-6. Browse Items
+# 6. Browse Items
 Route: /browse
 
 Component: Browse.jsx
@@ -134,7 +134,7 @@ If admin, returns all items; otherwise filters to only those where owner === sub
 
 Frontend stores lostItems and foundItems in state.
 
-7. Mark Solved (Delete)
+# 7. Mark Solved (Delete)
 UI: “Mark Solved” button on each card.
 
 Tech: React event handler → deleteItem(id, type)
@@ -153,7 +153,7 @@ Otherwise calls DynamoDB.delete.
 
 Result: Frontend removes the card from state—no confirmation dialog.
 
-8. Notify Owner (Admin Only)
+# 8. Notify Owner (Admin Only)
 UI: “Notify Owner” button appears only on Lost Items cards when isAdmin === true.
 
 Client: calls POST /notify { id, type }.
@@ -170,7 +170,7 @@ Result: SNS fans out an email to all confirmed subscribers for that topic.
 
 Note: The user must first confirm their subscription (click the link in the SNS confirmation email) before they’ll receive notifications.
 
-9. AWS Resources & Permissions
+# 9. AWS Resources & Permissions
 API Gateway (HTTP API) with CORS enabled (*) for dev.
 
 Lambda functions (Node.js 18.x) for each route: createLost, createFound, listItems, deleteItem, signup, login, notifyOwner.
@@ -189,7 +189,7 @@ SNS topic (ALERT_TOPIC) for notifications:
 
 Lambdas can Subscribe and Publish to this topic.
 
-10. Frontend Stack
+# 10. Frontend Stack
 React (v18) with React Router for SPA navigation.
 
 Axios instance that:
